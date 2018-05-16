@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClownFish.Base;
 using ClownFish.Log.Model;
 using SpecChecker.CoreLibrary.Config;
 using SpecChecker.CoreLibrary.Models;

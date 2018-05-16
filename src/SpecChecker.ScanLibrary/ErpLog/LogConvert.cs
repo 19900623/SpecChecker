@@ -56,7 +56,7 @@ namespace SpecChecker.ScanLibrary.ErpLog
 
 			string args = row.GetString("Parameters");
 			if( string.IsNullOrEmpty(args) == false ) {
-				info.Parameters = args.FromJson<List<ClownFish.Log.Model.NameValue>>();
+				info.Parameters = args.FromJson<List<NameValue>>();
 			}
 
 			return info;

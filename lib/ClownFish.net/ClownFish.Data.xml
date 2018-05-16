@@ -621,6 +621,13 @@
             <param name="sql"></param>
             <returns></returns>
         </member>
+        <member name="M:ClownFish.Data.SqlClient.MsSqlHelper.IsDuplicateInsert(System.Exception)">
+            <summary>
+            判断一个数据库异常是否由于重复插入导致的，由唯一索引控制。
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClownFish.Data.SqlClient.SqlServerExtensions">
             <summary>
             SQLSERVER相关的扩展工具类
