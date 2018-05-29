@@ -85,16 +85,6 @@
             定时刷新间隔
             </summary>
         </member>
-        <member name="P:ClownFish.Log.Configuration.LogConfig.Writers">
-            <summary>
-            所有Writer的配置集合
-            </summary>
-        </member>
-        <member name="P:ClownFish.Log.Configuration.LogConfig.Types">
-            <summary>
-            所有要写入的数据类型集合
-            </summary>
-        </member>
         <member name="P:ClownFish.Log.Configuration.LogConfig.Performance">
             <summary>
             性能日志的配置信息
@@ -103,6 +93,24 @@
         <member name="P:ClownFish.Log.Configuration.LogConfig.ExceptionWriter">
             <summary>
             写日志失败时，异常消息的写入器
+            </summary>
+        </member>
+        <member name="P:ClownFish.Log.Configuration.LogConfig.LogEnvironmentInfo">
+            <summary>
+            异常日志中是否包含环境信息。
+            老版本的异常日志是不包含环境信息的。
+            使用建议：如果环境可控，例如Web站点，可以不开启；
+            如果是给客户私有部署，环境各不相同，当出现异常时想参考客户运行环境，那么可以开启此参数。
+            </summary>
+        </member>
+        <member name="P:ClownFish.Log.Configuration.LogConfig.Writers">
+            <summary>
+            所有Writer的配置集合
+            </summary>
+        </member>
+        <member name="P:ClownFish.Log.Configuration.LogConfig.Types">
+            <summary>
+            所有要写入的数据类型集合
             </summary>
         </member>
         <member name="M:ClownFish.Log.Configuration.LogConfig.ReadConfigFile">
@@ -506,6 +514,11 @@
             请求头信息
             </summary>
         </member>
+        <member name="P:ClownFish.Log.Model.HttpInfo.RequestId">
+            <summary>
+            为每个请求分配的唯一ID
+            </summary>
+        </member>
         <member name="P:ClownFish.Log.Model.HttpInfo.Url">
             <summary>
             页面地址
@@ -532,12 +545,6 @@
             </summary>
             <param name="context"></param>
             <returns></returns>
-        </member>
-        <member name="F:ClownFish.Log.Model.HttpInfo.IgnoreHttpsRequestBody">
-            <summary>
-            一个特定的字符串，指示在日志记录时，不记录请求体内容。
-            如果不希望记录某个请求体的内容，可以设置 context.Items[IgnoreHttpsRequestBody] = "yes";
-            </summary>
         </member>
         <member name="M:ClownFish.Log.Model.HttpInfo.SetHttpInfo(System.Web.HttpContext)">
             <summary>
@@ -660,6 +667,13 @@
             Init
             </summary>
             <param name="app"></param>
+        </member>
+        <member name="M:ClownFish.Log.ExceptionLogModule.IsNeedLog(System.Exception)">
+            <summary>
+            决定某个异常是否需要写入异常日志，
+            </summary>
+            <param name="ex"></param>
+            <returns></returns>
         </member>
         <member name="M:ClownFish.Log.ExceptionLogModule.App_Error(System.Object,System.EventArgs)">
             <summary>
@@ -1149,13 +1163,6 @@
             如果重试失败，就忽略记录操作
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:ClownFish.Log.SomeExtenstions.ReadInputStream(System.Web.HttpRequest)">
-            <summary>
-            读取输入的流
-            </summary>
-            <param name="request">HttpRequest</param>
-            <returns>输入的流</returns>
         </member>
         <member name="T:ClownFish.Log.Web.LogFileViewHandler">
             <summary>
